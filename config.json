@@ -1,0 +1,43 @@
+{
+    "workspace": "//homenas.myth815.com/迅雷/下载",
+    "workspace2":"//homenas.myth815.com/AV/待整理/新建文件夹",
+    "output_dir":"//homenas.myth815.com/AV/待整理/新建文件夹/JAV_output",
+    "min_file_size": 1000000000,
+    "update_interval": 60,
+    "handle_file_extends": ["mp4", "mkv", "avi", "ts"],
+    "replace_word":{
+        "fc2ppv":"fc2-ppv"
+    },
+    "remove_prefix": [
+        "18bt.net_",
+        "[psk.la]",
+        "aavv333.com@",
+        "4k2.com@",
+        "@jnty60.app_",
+        "aavv38.xyz@",
+        "freedl.org@",
+        "zzpp05.com@",
+        "kcf9.com@",
+        "hhd800.com@",
+        "gg5.co@",
+        "gc2048.com@",
+        "rh2048.com@",
+        "aavv333.com@"
+    ],
+    "remove_suffix": [
+        "-c_gg5",
+        "_001^wm",
+        "_000^wm",
+        "_000",
+        "-c",
+        "ch",
+        "_6k",
+        "-4k",
+        ".[4k]",
+        "-ai",
+        "_hd",
+        "aavv38.xyz@",
+        "c",
+        "-fhd"
+    ]
+}
