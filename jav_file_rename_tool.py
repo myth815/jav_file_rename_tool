@@ -3,6 +3,7 @@ import time
 import json
 import time
 import re
+import shutil
 
 def log_message(message):
     """Log messages with timestamp."""
@@ -47,17 +48,39 @@ def remove_prefix(file_name, remove_prefix_list):
             file_name = remove_prefix(file_name, remove_prefix_list)
     return file_name
 
+def handle_success_file(full_path, file_name_lower):
+    # 将文件拷贝到对应的目录
+    shutil.move(full_path, file_name_lower)
+    pass
+
+def handle_unsuccess_file(full_path, file_name_lower):
+    # 将文件拷贝到对应的目录
+    pass
+
 def handle_file(file_name, remove_prefix_list, remove_suffix_list):
     file_name_lower = file_name.lower()
     file_name_lower = remove_prefix(file_name_lower, remove_prefix_list)
     file_name_lower = remove_suffix(file_name_lower, remove_suffix_list)
     if not validate_string(file_name_lower):
         if validate_file_less_space(file_name_lower):
-            print(file_name)
-            print(file_name_lower)
-        print(file_name)
-        print(file_name_lower)
-    # print(file_name_lower)
+            # 定义正则表达式：(\D+)(\d+)
+            # \D+ 匹配一个或多个非数字字符
+            # \d+ 匹配一个或多个数字
+            # 使用括号创建捕获组，以便在替换时引用
+            pattern = r'(\D+)(\d+)'
+            # 使用 \1 和 \2 引用两个捕获组，中间插入连字符 '-'
+            result = re.sub(pattern, r'\1-\2', file_name_lower)
+            if validate_string(result):
+                return result
+                pass
+            else:
+                return None
+        else:
+            # 其他可能的问题
+            pass
+    else:
+        return file_name_lower
+        pass
 
 def walk_workspace(workspace, output_dir, min_file_size, handle_file_extends, remove_prefix_list, remove_suffix_list):
     for root, dirs, files in os.walk(workspace):
@@ -65,8 +88,11 @@ def walk_workspace(workspace, output_dir, min_file_size, handle_file_extends, re
             file_name, file_ext = os.path.splitext(file)
             file_ext = file_ext.replace('.', '')
             file_size = os.path.getsize(os.path.join(root, file))
+            full_path = os.path.join(root, file)
             if file_ext in handle_file_extends and file_size > min_file_size:
-                handle_file(file_name, remove_prefix_list, remove_suffix_list)
+                vaildate_file_name = handle_file(file_name, remove_prefix_list, remove_suffix_list)
+                if vaildate_file_name:
+                    handle_success_file(full_path, output_dir + "/" + vaildate_file_name + "." + file_ext)
                 # handle the file
                 pass
             else:
