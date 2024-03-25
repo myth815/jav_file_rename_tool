@@ -1,7 +1,7 @@
 {
-    "workspace": "//homenas.myth815.com/迅雷/下载",
-    "workspace2":"//homenas.myth815.com/AV/待整理/新建文件夹",
-    "output_dir":"//homenas.myth815.com/AV/待整理/JavsNameChecked",
+    "workspace2": "//homenas.myth815.com/迅雷/下载",
+    "workspace":"//homenas.myth815.com/AV/ToBeOrganized/WaitForcheck",
+    "output_dir":"//homenas.myth815.com/AV/ToBeOrganized/JavsNameChecked",
     "min_file_size": 1000000000,
     "update_interval": 60,
     "handle_file_extends": ["mp4", "mkv", "avi", "ts"],
